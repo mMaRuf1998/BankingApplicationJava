@@ -1,28 +1,28 @@
 package bank;
 import java.util.Scanner;
 
-
 public class BankingApp {
 	
-	static void delay() {};
-	static void elementDelete(int k){};
+	public static BankDetails C[] = new BankDetails[10000]; 
+	static Scanner sc = new Scanner(System.in); 
 	
 	public static void main(String args[])
 	{
 		// Switch Case for the menu :
+		
 		int ch; 
 		
 		
         do {  
-            System.out.println("\n***Standard Chartered Banking Portal***");  
-            System.out.println("1.Create a new Account \n"
+            System.out.println("\n***American Express Banking Portal***\n");  
+            System.out.println("1. Create a new Account\n"
 			            		+ "2. Display all accounts\n"
 			            		+ "3. Update an account\n"
 			            		+ "4. Delete an account\n"
 			            		+ "5. Deposit an amount\n"
-			            		+ "6. Withdraw an amount\n "
-			            		+ "7. Search an account\n "
-			            		+ "8.Exit");  
+			            		+ "6. Withdraw an amount\n"
+			            		+ "7. Search an account\n"
+			            		+ "8. Exit");  
             
             System.out.println("Enter your choice: ");  
             
@@ -150,4 +150,31 @@ public class BankingApp {
             }  
             while (ch != 8); 
 	}
+	
+	static void delay()
+    {
+    	    System.out.println("Press Any Key to Continue !");
+	        sc.nextLine();
+	        sc.nextLine();
+    }
+	
+	static void elementDelete(int k){
+		
+		BankDetails C2[] = new BankDetails[1000];
+		
+		int n = BankDetails.bankAccountCount ;
+		int var = 0 ;
+		for(int i=0;i<n;i++)
+		{
+			if(i!=k)
+			{
+				C2[var] = C[i] ;
+				var++;
+			}
+		}
+		
+		C = C2 ;
+		BankDetails.bankAccountCount--;
+		
+  }
 }
