@@ -11,10 +11,11 @@ public class BankingApp {
 	{
 		// Switch Case for the menu :
 		
-		int ch; 
+		String ch; 
 		
 		
         do {  
+        	
             System.out.println("\n***American Express Banking Portal***\n");  
             System.out.println("1. Create a new Account\n"
 			            		+ "2. Display all accounts\n"
@@ -27,11 +28,11 @@ public class BankingApp {
             
             System.out.println("Enter your choice: ");  
             
-            ch = sc.nextInt();  
+            ch = sc.next();  
             
                 switch (ch) {  
                 	
-                	case 1:
+                	case "1":
        
                 		C[BankDetails.bankAccountCount]= new BankDetails();
                 		C[BankDetails.bankAccountCount].openAccount(); 
@@ -39,7 +40,7 @@ public class BankingApp {
        
                 		
                 		break;
-                    case 2:  
+                    case "2":  
                     	
                     	if(BankDetails.bankAccountCount==0)
                     	{
@@ -56,8 +57,8 @@ public class BankingApp {
                     	}
                         delay();
                         break;  
-                    case 3:
-                    	System.out.print("Enter account no. you want to Update: ");
+                    case "3":
+                    	System.out.print("Enter Account Number to Update: ");
                     	String ac_no = sc.next();  
                         boolean found = false;  
                         for (int i = 0; i < BankDetails.bankAccountCount ; i++) {  
@@ -74,8 +75,8 @@ public class BankingApp {
                         delay();
                     	break;
                     	
-                    case 4:
-                    	System.out.print("Enter account no. you want to Delete: ");
+                    case "4":
+                    	System.out.print("Enter Account Number to Delete: ");
                         ac_no = sc.next();  
                         found = false;  
                         for (int i = 0; i < BankDetails.bankAccountCount ; i++) {  
@@ -98,7 +99,7 @@ public class BankingApp {
                         delay();
                     	break;
                    
-                    case 5:  
+                    case "5":  
                         System.out.print("Enter Account number for Deposit : ");  
                         ac_no = sc.next();  
                         found = false;  
@@ -115,7 +116,7 @@ public class BankingApp {
                         delay();
                         break; 
                         
-                    case 6:  
+                    case "6":  
                     	
                         System.out.print("Enter Account No : ");  
                         ac_no = sc.next();  
@@ -134,7 +135,7 @@ public class BankingApp {
                         delay();
                         break;  
                        
-                    case 7:  
+                    case "7":  
                         System.out.print("Enter account no. you want to search: ");  
                         ac_no = sc.next();  
                         found = false;  
@@ -151,12 +152,12 @@ public class BankingApp {
                         delay();
                         break;  
                    
-                    case 8:  
+                    case "8":  
                         System.out.println("Thank You for using American Express !");  
                         break;  
                 }  
             }  
-            while (ch != 8); 
+            while (!ch.equals("8")); 
 	}
 	
 	static void delay()

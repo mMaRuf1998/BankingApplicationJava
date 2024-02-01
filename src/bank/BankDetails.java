@@ -29,28 +29,30 @@ public class BankDetails {
     	System.out.print("Enter Name: ");  
         String nameTemp = sc.nextLine(); 
      
-        System.out.print("Enter Account Type: ");  
-        String acc_typeTemp = sc.next();  
+        System.out.print("Enter Account Type:\n1.Current 2.Savings 3.Salary: ");  
+        String accTypeTemp = sc.next();  
          
         System.out.print("Enter Balance: ");  
         long balanceTemp = sc.nextLong();  
+        String typeString = validAccountType(accTypeTemp) ;
         
-        if(balanceTemp>minBalance)
+        if(balanceTemp>minBalance&&typeString!=null)
         	{
 	        	name = nameTemp ;
 	        	accNo = stringConvert(accountCreationCount) ;
-	        	accType = acc_typeTemp ;
+	        	accType = typeString ;
 	        	balance = balanceTemp ;
 	        	creationDate = myDateObj.format(myFormatObj);
 	        	System.out.println("Account Succesfully Created !");
 	        	bankAccountCount++;
 	        	accountCreationCount++;
+	        	showAccount() ;
         	}
         else
         	{
         	
         		System.out.println("Account Creation Failed !\n"
-        				+ "Low Balance !");
+        				+ "Low Balance or Wrong Details !");
         	
         	}	
     }
@@ -59,7 +61,7 @@ public class BankDetails {
     	System.out.println("");
     	if(bankAccountCount>0) {
     	System.out.println("Name of account holder: " + name);  
-        System.out.println("Account no.: " + accNo);  
+        System.out.println("Account Number: " + accNo);  
         System.out.println("Account type: " + accType);  
         System.out.println("Creation date: " + creationDate);  
         System.out.println("Balance: " + balance);
@@ -117,8 +119,6 @@ public class BankDetails {
    		 System.out.println("Enter Your New Name :");
    		 sc.nextLine();
    		 name = sc.nextLine();
-   		 System.out.println("Enter Account Type :");
-   		 accType = sc.nextLine();
    		 System.out.println("Your name has been updated !");
    		 showAccount();
    		 return true;
@@ -142,6 +142,27 @@ public class BankDetails {
 	    {
 	    	return ""+number+"";
 	    }
+    
+    public String validAccountType(String accountType){
+    	
+		if (accountType.equals("1")) {  
+		            
+			return "Current" ;
+		} 
+		else if(accountType.equals("2")){
+			
+			return "Savings" ;
+		}
+
+		else if(accountType.equals("3")){
+			
+			return "Salary" ;
+		}
+		
+		else
+			
+			return null;  
+    }
 	    
     
   
