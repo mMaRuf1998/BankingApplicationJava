@@ -1,14 +1,17 @@
 package bank;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 
 public class BankingApp {
 	
-	public static BankDetails C[] = new BankDetails[10000]; 
+	
+
+	
 	static Scanner sc = new Scanner(System.in); 
 	
 	public static void main(String args[])
 	{
+		ArrayList<BankDetails>memoryData = new ArrayList<BankDetails>();
 		// Switch Case for the menu :
 		
 		String ch; 
@@ -33,32 +36,33 @@ public class BankingApp {
                 switch (ch) {  
                 	
                 	case "1":
-       
-                		C[BankDetails.bankAccountCount]= new BankDetails();
-                		C[BankDetails.bankAccountCount].openAccount(); 
+                		BankDetails temp = new BankDetails();
+                		temp.openAccount(); 
+                		memoryData.add(temp);
+                	
                 		delay();
        
                 		
                 		break;
                     case "2":  
                     	
-                    	if(BankDetails.bankAccountCount==0)
+                    	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
       
                     	}
                     	else
                     	{
-	                        for (int i = 0; i < BankDetails.bankAccountCount  ; i++) {  
+	                        for (int i = 0; i < memoryData.size()  ; i++) {  
 	                    
-	                            C[i].showAccount();  
+	                            memoryData.get(i).showAccount();  
 	                            System.out.println("");
 	                        }  
                     	}
                         delay();
                         break;  
                     case "3":
-                    	if(BankDetails.bankAccountCount==0)
+                    	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
       
@@ -67,8 +71,8 @@ public class BankingApp {
                     	System.out.print("Enter Account Number to Update: ");
                     	String ac_no = sc.next();  
                         boolean found = false;  
-                        for (int i = 0; i < BankDetails.bankAccountCount ; i++) {  
-                            found = C[i].update(ac_no);  
+                        for (int i = 0; i < memoryData.size() ; i++) {  
+                            found = memoryData.get(i).update(ac_no);  
                             if (found) {
                        
                                 break;  
@@ -82,7 +86,7 @@ public class BankingApp {
                         delay();
                     	break;
                     case "4":
-                    	if(BankDetails.bankAccountCount==0)
+                    	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
       
@@ -91,12 +95,12 @@ public class BankingApp {
                     	System.out.print("Enter Account Number to Delete: ");
                         String ac_no = sc.next();  
                         boolean found = false;
-                        for (int i = 0; i < BankDetails.bankAccountCount ; i++) {  
-                            found = C[i].delete(ac_no);  
+                        for (int i = 0; i < memoryData.size() ; i++) {  
+                            found = memoryData.get(i).delete(ac_no);  
                             if (found) {
-                            	elementDelete(i);
+                            	memoryData.remove(i);
                             	System.out.println("Deletion Successful !");
-                            	if(BankDetails.bankAccountCount<=0)
+                            	if(memoryData.size()==0)
                             		System.out.println("There are no Accounts ! ");
                                 break;  
                             }  
@@ -110,7 +114,7 @@ public class BankingApp {
                     	break;
                    
                     case "5":
-                    	if(BankDetails.bankAccountCount==0)
+                    	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
       
@@ -119,10 +123,10 @@ public class BankingApp {
                         System.out.print("Enter Account number for Deposit : ");  
                         String ac_no = sc.next();  
                         boolean found = false;  
-                        for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
-                            found = C[i].search(ac_no);  
+                        for (int i = 0; i < memoryData.size(); i++) {  
+                            found = memoryData.get(i).search(ac_no);  
                             if (found) {  
-                                C[i].deposit();  
+                            	memoryData.get(i).deposit();  
                                 break;  
                             }  
                         }  
@@ -134,7 +138,7 @@ public class BankingApp {
                         break; 
                         
                     case "6":  
-                    	if(BankDetails.bankAccountCount==0)
+                    	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
       
@@ -143,10 +147,10 @@ public class BankingApp {
                         System.out.print("Enter Account Number : ");  
                         String ac_no = sc.next();  
                         boolean found = false;  
-                        for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
-                            found = C[i].search(ac_no);  
+                        for (int i = 0; i < memoryData.size(); i++) {  
+                            found = memoryData.get(i).search(ac_no);  
                             if (found) {  
-                                C[i].withdrawal();  
+                            	memoryData.get(i).withdrawal();  
                                 break;  
                             }  
                         }  
@@ -158,7 +162,7 @@ public class BankingApp {
                         break;  
                        
                     case "7":
-                    	if(BankDetails.bankAccountCount==0)
+                    	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
       
@@ -167,8 +171,8 @@ public class BankingApp {
                         System.out.print("Enter account number to search: ");  
                         String ac_no = sc.next();  
                         boolean found = false;  
-                        for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
-                            found = C[i].search(ac_no);  
+                        for (int i = 0; i < memoryData.size(); i++) {  
+                            found = memoryData.get(i).search(ac_no);  
                             if (found) {  
                                 break;  
                             }  
@@ -194,24 +198,5 @@ public class BankingApp {
 	        sc.nextLine();
 	        sc.nextLine();
     }
-	
-	static void elementDelete(int k){
-		
-		BankDetails C2[] = new BankDetails[1000];
-		
-		int n = BankDetails.bankAccountCount ;
-		int var = 0 ;
-		for(int i=0;i<n;i++)
-		{
-			if(i!=k)
-			{
-				C2[var] = C[i] ;
-				var++;
-			}
-		}
-		
-		C = C2 ;
-		BankDetails.bankAccountCount--;
-		
-  }
+
 }

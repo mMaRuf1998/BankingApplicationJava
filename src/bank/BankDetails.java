@@ -52,7 +52,7 @@ public class BankDetails {
         	{
         	
         		System.out.println("Account Creation Failed !\n"
-        				+ "Low Balance or Wrong Details !");
+        						 + "Low Balance or Wrong Details !");
         	
         	}	
     }
