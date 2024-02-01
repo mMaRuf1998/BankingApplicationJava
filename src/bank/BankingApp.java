@@ -45,7 +45,6 @@ public class BankingApp {
                 		
                 		break;
                     case "2":  
-                    	
                     	if(memoryData.size()==0)
                     	{
                     		System.out.println("There are no Accounts ! ");
@@ -57,10 +56,11 @@ public class BankingApp {
 	                    
 	                            memoryData.get(i).showAccount();  
 	                            System.out.println("");
-	                        }  
+	                        	}  
                     	}
                         delay();
                         break;  
+                        
                     case "3":
                     	if(memoryData.size()==0)
                     	{
@@ -85,6 +85,7 @@ public class BankingApp {
                     	}
                         delay();
                     	break;
+                    	
                     case "4":
                     	if(memoryData.size()==0)
                     	{
