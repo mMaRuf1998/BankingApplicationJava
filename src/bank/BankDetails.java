@@ -60,7 +60,7 @@ public class BankDetails {
     public void showAccount() { 
     	System.out.println("");
     	if(bankAccountCount>0) {
-    	System.out.println("Name of account holder: " + name);  
+    	System.out.println("Name of the account holder: " + name);  
         System.out.println("Account Number: " + accNo);  
         System.out.println("Account type: " + accType);  
         System.out.println("Creation date: " + creationDate);  

@@ -24,7 +24,7 @@ public class BankingApp {
 			            		+ "5. Deposit an amount\n"
 			            		+ "6. Withdraw an amount\n"
 			            		+ "7. Search an account\n"
-			            		+ "8. Exit");  
+			            		+ "8. Exit\n");  
             
             System.out.println("Enter your choice: ");  
             
@@ -58,6 +58,12 @@ public class BankingApp {
                         delay();
                         break;  
                     case "3":
+                    	if(BankDetails.bankAccountCount==0)
+                    	{
+                    		System.out.println("There are no Accounts ! ");
+      
+                    	}
+                    	else {
                     	System.out.print("Enter Account Number to Update: ");
                     	String ac_no = sc.next();  
                         boolean found = false;  
@@ -71,38 +77,48 @@ public class BankingApp {
                        
                         if (!found) {  
                             System.out.println("Update failed! Account doesn't exist..!!");  
-                        }  
+                        } 
+                    	}
                         delay();
                     	break;
-                    	
                     case "4":
+                    	if(BankDetails.bankAccountCount==0)
+                    	{
+                    		System.out.println("There are no Accounts ! ");
+      
+                    	}
+                    	else {
                     	System.out.print("Enter Account Number to Delete: ");
-                        ac_no = sc.next();  
-                        found = false;  
+                        String ac_no = sc.next();  
+                        boolean found = false;
                         for (int i = 0; i < BankDetails.bankAccountCount ; i++) {  
                             found = C[i].delete(ac_no);  
                             if (found) {
                             	elementDelete(i);
                             	System.out.println("Deletion Successful !");
-                            	if(BankDetails.bankAccountCount>0)
-                            		C[i].showAccount();
-                            	else
+                            	if(BankDetails.bankAccountCount<=0)
                             		System.out.println("There are no Accounts ! ");
-                            		
                                 break;  
                             }  
                         }
                        
                         if (!found) {  
                             System.out.println("Deletion failed! Account doesn't exist..!!");  
-                        }  
+                        }
+                    	}
                         delay();
                     	break;
                    
-                    case "5":  
+                    case "5":
+                    	if(BankDetails.bankAccountCount==0)
+                    	{
+                    		System.out.println("There are no Accounts ! ");
+      
+                    	}
+                    	else {
                         System.out.print("Enter Account number for Deposit : ");  
-                        ac_no = sc.next();  
-                        found = false;  
+                        String ac_no = sc.next();  
+                        boolean found = false;  
                         for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
                             found = C[i].search(ac_no);  
                             if (found) {  
@@ -111,16 +127,22 @@ public class BankingApp {
                             }  
                         }  
                         if (!found) {  
-                            System.out.println("Deposit failed! Account doesn't exist..!!");  
+                            System.out.println("Deposit failed! Account doesn't exist !");  
                         }
+                    	}
                         delay();
                         break; 
                         
                     case "6":  
-                    	
-                        System.out.print("Enter Account No : ");  
-                        ac_no = sc.next();  
-                        found = false;  
+                    	if(BankDetails.bankAccountCount==0)
+                    	{
+                    		System.out.println("There are no Accounts ! ");
+      
+                    	}
+                    	else {
+                        System.out.print("Enter Account Number : ");  
+                        String ac_no = sc.next();  
+                        boolean found = false;  
                         for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
                             found = C[i].search(ac_no);  
                             if (found) {  
@@ -129,16 +151,22 @@ public class BankingApp {
                             }  
                         }  
                         if (!found) {  
-                            System.out.println("Search failed! Account doesn't exist..!!");  
+                            System.out.println("Withdraw Failed! Account doesn't exist !");  
                         }  
-                        
+                    	}
                         delay();
                         break;  
                        
-                    case "7":  
-                        System.out.print("Enter account no. you want to search: ");  
-                        ac_no = sc.next();  
-                        found = false;  
+                    case "7":
+                    	if(BankDetails.bankAccountCount==0)
+                    	{
+                    		System.out.println("There are no Accounts ! ");
+      
+                    	}
+                    	else {
+                        System.out.print("Enter account number to search: ");  
+                        String ac_no = sc.next();  
+                        boolean found = false;  
                         for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
                             found = C[i].search(ac_no);  
                             if (found) {  
@@ -148,7 +176,7 @@ public class BankingApp {
                         if (!found) {  
                             System.out.println("Search failed! Account doesn't exist..!!");  
                         }  
-                        
+                    	}
                         delay();
                         break;  
                    
