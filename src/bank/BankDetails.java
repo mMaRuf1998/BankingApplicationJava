@@ -14,6 +14,7 @@ public class BankDetails {
     private long balance;  
     private int minBalance = 500 ;
     static int bankAccountCount=0;
+    static int accountCreationCount=1;
     
     // For Taking Inputs :
     Scanner sc = new Scanner(System.in); 
@@ -27,9 +28,7 @@ public class BankDetails {
     	
     	System.out.print("Enter Name: ");  
         String nameTemp = sc.nextLine(); 
-        System.out.print("Enter Account Number: ");  
-        String accnoTemp = sc.next();  
-        
+     
         System.out.print("Enter Account Type: ");  
         String acc_typeTemp = sc.next();  
          
@@ -39,17 +38,19 @@ public class BankDetails {
         if(balanceTemp>minBalance)
         	{
 	        	name = nameTemp ;
-	        	accNo = accnoTemp ;
+	        	accNo = stringConvert(accountCreationCount) ;
 	        	accType = acc_typeTemp ;
 	        	balance = balanceTemp ;
 	        	creationDate = myDateObj.format(myFormatObj);
 	        	System.out.println("Account Succesfully Created !");
 	        	bankAccountCount++;
+	        	accountCreationCount++;
         	}
         else
         	{
         	
-        		System.out.println("Account Creation Failed !\nMinimum of Deposit BDT 500 is required !");
+        		System.out.println("Account Creation Failed !\n"
+        				+ "Low Balance !");
         	
         	}	
     }
@@ -136,14 +137,14 @@ public class BankDetails {
   
         return false;  
     }  
-    	
     
+    public String stringConvert(int number)
+	    {
+	    	return ""+number+"";
+	    }
+	    
     
-    
-    
-    
-    
-    
+  
     
     
     
