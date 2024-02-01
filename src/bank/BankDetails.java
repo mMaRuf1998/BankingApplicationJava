@@ -30,7 +30,7 @@ public class BankDetails {
         System.out.print("Enter Account Number: ");  
         String accnoTemp = sc.next();  
         
-        System.out.print("Enter Account type: ");  
+        System.out.print("Enter Account Type: ");  
         String acc_typeTemp = sc.next();  
          
         System.out.print("Enter Balance: ");  
@@ -55,12 +55,18 @@ public class BankDetails {
     }
     
     public void showAccount() { 
-    	
+    	System.out.println("");
+    	if(bankAccountCount>0) {
     	System.out.println("Name of account holder: " + name);  
         System.out.println("Account no.: " + accNo);  
         System.out.println("Account type: " + accType);  
         System.out.println("Creation date: " + creationDate);  
         System.out.println("Balance: " + balance);
+    	}
+    	else
+    	{
+    		System.out.println("There are no Accounts !");
+    	}
     	
     }
     
@@ -71,7 +77,8 @@ public class BankDetails {
         System.out.println("Enter the amount you want to deposit: ");  
         amount = sc.nextLong();  
         
-        balance = balance + amount;  
+        balance = balance + amount; 
+        System.out.println("Balance after deposit: " + balance);
     	
     }
     
@@ -81,20 +88,20 @@ public class BankDetails {
         System.out.println("Enter the amount you want to withdraw: ");  
         amount = sc.nextLong();  
         
-        if (balance >= amount) 
+        if (balance >= amount+minBalance) 
         	{  
             	balance = balance - amount;  
             	System.out.println("Balance after withdrawal: " + balance);  
         	} 
         else 
         	{  
-            	System.out.println("Your balance is less than " + amount + "\tTransaction failed...!!" );  
+            	System.out.println("Transaction Failed , Low Balance !" );  
         	} 
     	
     }
     
-    public boolean search(String accNo) { 
-    	if (accNo.equals(accNo)) 
+    public boolean search(String ac_No) { 
+    	if (accNo.equals(ac_No)) 
 	    	{  
 	            showAccount();  
 	            return true;  
@@ -112,6 +119,7 @@ public class BankDetails {
    		 System.out.println("Enter Account Type :");
    		 accType = sc.nextLine();
    		 System.out.println("Your name has been updated !");
+   		 showAccount();
    		 return true;
    	 }
     	
@@ -123,10 +131,10 @@ public class BankDetails {
     	
     	if (accNo.equals(ac_no)) {  
             
-            return (true);  
+            return true;  
         }  
   
-        return (false);  
+        return false;  
     }  
     	
     

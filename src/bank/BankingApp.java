@@ -1,6 +1,7 @@
 package bank;
 import java.util.Scanner;
 
+
 public class BankingApp {
 	
 	public static BankDetails C[] = new BankDetails[10000]; 
@@ -48,7 +49,9 @@ public class BankingApp {
                     	else
                     	{
 	                        for (int i = 0; i < BankDetails.bankAccountCount  ; i++) {  
+	                    
 	                            C[i].showAccount();  
+	                            System.out.println("");
 	                        }  
                     	}
                         delay();
@@ -70,6 +73,7 @@ public class BankingApp {
                         }  
                         delay();
                     	break;
+                    	
                     case 4:
                     	System.out.print("Enter account no. you want to Delete: ");
                         ac_no = sc.next();  
@@ -79,7 +83,11 @@ public class BankingApp {
                             if (found) {
                             	elementDelete(i);
                             	System.out.println("Deletion Successful !");
-                            	C[i].showAccount();
+                            	if(BankDetails.bankAccountCount>0)
+                            		C[i].showAccount();
+                            	else
+                            		System.out.println("There are no Accounts ! ");
+                            		
                                 break;  
                             }  
                         }
@@ -91,10 +99,10 @@ public class BankingApp {
                     	break;
                    
                     case 5:  
-                        System.out.print("Enter Account no. for Deposit : ");  
+                        System.out.print("Enter Account number for Deposit : ");  
                         ac_no = sc.next();  
                         found = false;  
-                        for (int i = 0; i < C.length; i++) {  
+                        for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
                             found = C[i].search(ac_no);  
                             if (found) {  
                                 C[i].deposit();  
@@ -112,7 +120,7 @@ public class BankingApp {
                         System.out.print("Enter Account No : ");  
                         ac_no = sc.next();  
                         found = false;  
-                        for (int i = 0; i < C.length; i++) {  
+                        for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
                             found = C[i].search(ac_no);  
                             if (found) {  
                                 C[i].withdrawal();  
@@ -130,7 +138,7 @@ public class BankingApp {
                         System.out.print("Enter account no. you want to search: ");  
                         ac_no = sc.next();  
                         found = false;  
-                        for (int i = 0; i < C.length; i++) {  
+                        for (int i = 0; i < BankDetails.bankAccountCount; i++) {  
                             found = C[i].search(ac_no);  
                             if (found) {  
                                 break;  
@@ -144,7 +152,7 @@ public class BankingApp {
                         break;  
                    
                     case 8:  
-                        System.out.println("See you soon...");  
+                        System.out.println("Thank You for using American Express !");  
                         break;  
                 }  
             }  
