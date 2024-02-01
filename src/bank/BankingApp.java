@@ -1,9 +1,12 @@
 package bank;
+import java.util.Scanner;
 
-import bankApp.BankDetails;
 
 public class BankingApp {
-
+	
+	static void delay() {};
+	static void elementDelete(int k){};
+	
 	public static void main(String args[])
 	{
 		// Switch Case for the menu :
@@ -22,7 +25,9 @@ public class BankingApp {
 			            		+ "8.Exit");  
             
             System.out.println("Enter your choice: ");  
+            
             ch = sc.nextInt();  
+            
                 switch (ch) {  
                 	
                 	case 1:
