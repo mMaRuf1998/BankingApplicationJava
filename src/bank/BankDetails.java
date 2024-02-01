@@ -56,32 +56,80 @@ public class BankDetails {
     
     public void showAccount() { 
     	
+    	System.out.println("Name of account holder: " + name);  
+        System.out.println("Account no.: " + accNo);  
+        System.out.println("Account type: " + accType);  
+        System.out.println("Creation date: " + creationDate);  
+        System.out.println("Balance: " + balance);
     	
     }
     
     
     public void deposit() { 
+    	long amount;  
     	
+        System.out.println("Enter the amount you want to deposit: ");  
+        amount = sc.nextLong();  
+        
+        balance = balance + amount;  
     	
     }
     
     public void withdrawal() { 
+    	long amount;  
     	
+        System.out.println("Enter the amount you want to withdraw: ");  
+        amount = sc.nextLong();  
+        
+        if (balance >= amount) 
+        	{  
+            	balance = balance - amount;  
+            	System.out.println("Balance after withdrawal: " + balance);  
+        	} 
+        else 
+        	{  
+            	System.out.println("Your balance is less than " + amount + "\tTransaction failed...!!" );  
+        	} 
     	
     }
     
     public boolean search(String accNo) { 
+    	if (accNo.equals(accNo)) 
+	    	{  
+	            showAccount();  
+	            return true;  
+	        }  
     	
-    	
+        return false;  
     }
     
     public boolean update(String ac_no) {
     	
-    }
+    	if (accNo.equals(ac_no)) { 
+   		 System.out.println("Enter Your New Name :");
+   		 sc.nextLine();
+   		 name = sc.nextLine();
+   		 System.out.println("Enter Account Type :");
+   		 accType = sc.nextLine();
+   		 System.out.println("Your name has been updated !");
+   		 return true;
+   	 }
+    	
+   	 else
+   		 return false;
+     }
     
     public boolean delete(String ac_no) { 
     	
-    }
+    	if (accNo.equals(ac_no)) {  
+            
+            return (true);  
+        }  
+  
+        return (false);  
+    }  
+    	
+    
     
     
     
