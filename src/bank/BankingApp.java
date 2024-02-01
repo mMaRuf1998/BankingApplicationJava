@@ -40,10 +40,9 @@ public class BankingApp {
                 		temp.openAccount(); 
                 		memoryData.add(temp);
                 	
-                		delay();
-       
-                		
+                		delay();         		
                 		break;
+                		
                     case "2":  
                     	if(memoryData.size()==0)
                     	{
